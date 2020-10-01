@@ -1,8 +1,9 @@
 import express from 'express'
 const app = express()
+import { html } from './html.js'
 
 const IP_LOOPBACK = 'localhost'
-const IP_LOCAL = '192.168.1.126' // my local ip on my network
+const IP_LOCAL = '192.168.1.126'
 const PORT = 7777
 
 //Add a middleware, /sendMessagewhich will apply to all the routes
@@ -11,7 +12,12 @@ const PORT = 7777
 
 //Message Middleware
 app.use('/send_message', function (req, res, next) {
-    console.log('your message: ')
+    res.send()
+    next()
+})
+
+//html middleware
+app.use('/wrapWithHtml', html, (req, res, next) => {
     next()
 })
 
@@ -34,20 +40,6 @@ app.get('/send_message/get_current_time', (req, res) => {
 app.get('/send_message/how_pass_data', (req, res) => {
     res.send('Handled with app.use')
 })
-
-/*
-<!DOCTYPE html > 
-< html  lang =" en " > 
-  < head > 
-    < meta  charset =" utf-8 " />
-     < title > Exercices express 2 </ title > 
-  </ head > 
-
-  < body > 
-    < p > LE TEXTE A RETOURNER DEVRA SE TROUVER ICI </ p > 
-  </ body > 
-</ html > 
-*/
 
 // start the server
 app.listen(PORT, IP_LOCAL, () => {
