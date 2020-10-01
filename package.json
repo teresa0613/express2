@@ -1,0 +1,14 @@
+{
+  "name": "express2",
+  "version": "1.0.0",
+  "author": "teresa0613 <teresa1306@hotmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./": "./src/"
+  },
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "prettier": "^2.1.2"
+  }
+}
